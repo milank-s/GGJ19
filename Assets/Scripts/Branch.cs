@@ -29,6 +29,9 @@ public class Branch : MonoBehaviour{
 		scale = transform.localScale.y;
 		scale = Mathf.Clamp(Random.Range(0.25f, 0.5f) * scale, 1, 100);
 		// scale = 1 / image.bounds.extents.y;
+
+		// GetComponent<MeshRenderer>().material.SetFloat("_ScaleY", scale);
+    // GetComponent<MeshRenderer>().material.SetFloat("_ScaleX", transform.lossyScale.x);
 		transform.localScale = Vector3.right * transform.localScale.x;
 		GetComponent<MeshRenderer>().material.mainTexture = image.texture;
 
@@ -50,6 +53,7 @@ public class Branch : MonoBehaviour{
 			transform.up = Vector3.Lerp(transform.position - parent.transform.position, Vector3.up, 0.85f);
 			root = this;
 		}
+		transform.forward = root.parent.transform.forward;
 		branchCount ++;
 
 		StartCoroutine(Grow());

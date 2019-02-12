@@ -22,6 +22,10 @@ public class Pickup : MonoBehaviour{
 		size = transform.localScale * Random.Range(1f, 2f);
 		GetComponent<MeshRenderer>().material.mainTexture = image.texture;
 		weight = size.magnitude;
+
+		// GetComponent<MeshRenderer>().material.SetFloat("_ScaleY", transform.lossyScale.y);
+    // GetComponent<MeshRenderer>().material.SetFloat("_ScaleX", transform.lossyScale.x);
+
 		transform.localScale = Vector3.forward;
 		StartCoroutine(Grow());
 	}

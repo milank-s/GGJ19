@@ -73,6 +73,9 @@ public class PlayerBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Move();
+		if(angle >= 360){
+			angle = 0;
+		}
 		// angle = Mathf.Atan2(transform.position.x, transform.position.z);
 		// angle = Vector3.Angle(Vector3.zero - transform.position, Vector3.forward);
 	}

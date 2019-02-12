@@ -55,7 +55,7 @@ public class Main : MonoBehaviour {
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
 		EndGame();
-		sun.color = sky.Evaluate(Time.time/100f);
+		sun.color = sky.Evaluate(PlayerBehaviour.angle/360f);
 		// sun.transform.rotation = Quaternion.Slerp(sunRot, Quaternion.Euler(3, sun.transform.eulerAngles.y, sun.transform.eulerAngles.z), Time.time/50f);
 		sunSphere.transform.localPosition = Vector3.Lerp(sunPos, new Vector3(-100, -1, sunPos.z), Time.time/100f);
 	}

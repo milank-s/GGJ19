@@ -22,7 +22,7 @@ public class NPC : MonoBehaviour {
 			float perlin = Mathf.PerlinNoise(scrollSpeed * Time.time + -xOffset, Time.time + yOffset);
 		  // transform.position = Vector3.MoveTowards(transform.position, PlayerBehaviour.pos + (Vector3.forward * Mathf.Sin(Time.time + xOffset) * 20) + (Vector3.right * ((perlin * 2) - 0.5f) * 100 * lifeTime * 2), Time.deltaTime * moveDistance);
 			transform.RotateAround(Vector3.zero, Vector3.up, Time.deltaTime * moveDistance * ((-perlin * 2) + 0.25f));
-			transform.position += transform.forward * Mathf.Sin(Time.time * 3) * Time.deltaTime;
+			transform.position -= transform.forward * Mathf.Sin(Time.time * 3) * Time.deltaTime;
 			// transform.position += Vector3.right * moveDistance * Time.deltaTime * Mathf.PerlinNoise(scrollSpeed * Time.deltaTime + -xOffset, Time.deltaTime + yOffset);
 			//
 			// if(transform.position.z < 10 && movingAway){
@@ -41,7 +41,7 @@ public class NPC : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		lifeTime += Time.deltaTime * 2;
+		lifeTime += Time.deltaTime;
 		Move();
 	}
 

@@ -52,7 +52,7 @@ public class Shell : MonoBehaviour {
 		Branch newBranch = Branch.Instantiate(branchPrefab, t.transform.position + pos, Quaternion.identity).GetComponent<Branch>();
 		branches.Add(newBranch);
 		newBranch.parent = t;
-		newBranch.transform.forward = PlayerBehaviour.player.transform.forward;
+		
 		if(isRoot){
 			newBranch.isRoot = true;
 			roots.Add(newBranch);

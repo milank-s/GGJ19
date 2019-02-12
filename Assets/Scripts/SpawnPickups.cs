@@ -30,7 +30,10 @@ public class SpawnPickups : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(PlayerBehaviour.angle > playerXpos){
-			playerXpos = PlayerBehaviour.angle + Random.Range(0.1f, 0.75f);
+			playerXpos = PlayerBehaviour.angle + Random.Range(3f, 6f);
+			if(playerXpos > 360){
+				playerXpos = 0;
+			}
 			SpawnObject();
 			}
 		// }
@@ -64,7 +67,7 @@ public class SpawnPickups : MonoBehaviour {
 		// 	newnpc = Instantiate(shellnpc, pos, Quaternion.identity);
 		// }else{
 			newnpc = Instantiate(npc, pos, rot);
-			newnpc.transform.RotateAround(Vector3.zero, Vector3.up, 10);
+			newnpc.transform.RotateAround(Vector3.zero, Vector3.up, Random.Range(20, 30));
 			newnpc.transform.position += newnpc.transform.forward * Random.Range(-depth, depth);
 			// if(hasShell){
 			// Vector3 shellpos = transform.position + (Vector3.forward * Random.Range(-depth, depth)) + ((Vector3.right * 50) + PlayerBehaviour.pos.x * Vector3.right);
@@ -80,7 +83,8 @@ public class SpawnPickups : MonoBehaviour {
 		// Vector3 pos = transform.position + (Vector3.forward * Random.Range(-depth, depth)) + (Vector3.right * (Random.Range(50, 200) + PlayerBehaviour.pos.x));
 
 		GameObject newPickup = Instantiate(pickup, PlayerBehaviour.pos, PlayerBehaviour.player.rotation);
-		newPickup.transform.RotateAround(Vector3.zero, Vector3.up, Random.Range(-25f, -10f));
+		newPickup.transform.RotateAround(Vector3.zero, Vector3.up, Random.Range(-50f, -30f));
+		newPickup.transform.position += newPickup.transform.forward * Random.Range(-10f, 0f);
 		// if(Random.Range(0, 100) < 2){
 		// 	GameObject newShell = Instantiate(shell, pos, Quaternion.identity);
 		// 	newShell.transform.localScale *= (Mathf.Pow(Random.Range(0f, 1f), 3) * 5) + 1;
