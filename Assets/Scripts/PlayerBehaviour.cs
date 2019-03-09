@@ -8,6 +8,8 @@ public class PlayerBehaviour : MonoBehaviour {
 	public float moveDistance = 0.5f;
 	private bool xbuttonDown;
 	private bool zbuttonDown;
+	private float speed;
+	public float acceleration = 10f;
 	public Transform playerTransform;
 	SpriteRenderer sprite;
 	Crab crab;
@@ -27,19 +29,22 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 
 	void Move(){
+
 		if(Input.GetAxis("Horizontal") > 0){
-			transform.RotateAround(Vector3.zero, Vector3.up, -moveDistance * Time.deltaTime);
+			speed = Mathf.Clamp(speed - Time.deltaTime * acceleration, -moveDistance, 0);
+			transform.RotateAround(Vector3.zero, Vector3.up, speed * Time.deltaTime);
 			angle += moveDistance * Time.deltaTime;
 			xbuttonDown = true;
 			// transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 		}else if(Input.GetAxis("Horizontal") < 0){
 			// transform.position -= Vector3.right * moveDistance * Time.deltaTime;
-			transform.RotateAround(Vector3.zero, Vector3.up, moveDistance * Time.deltaTime);
+			speed = Mathf.Clamp(speed + Time.deltaTime * acceleration, 0, moveDistance);
+			transform.RotateAround(Vector3.zero, Vector3.up, speed * Time.deltaTime);
 			angle -= moveDistance * Time.deltaTime;
 			xbuttonDown = true;
 			// transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 		}
-		if(Input.GetAxis("Vertical") > 0 && playerTransform.localPosition.z < 10){
+		if(Input.GetAxis("Vertical") > 0 && playerTransform.localPosition.z < 15){
 				playerTransform.localPosition += Vector3.forward * moveDistance * Time.deltaTime * 2;
 				zbuttonDown = true;
 		}else if(Input.GetAxis("Vertical") < 0 && playerTransform.localPosition.z > -10){

@@ -22,7 +22,7 @@ public class Branch : MonoBehaviour{
 	public Rigidbody pickup;
 
 	public void Initialize(){
-		speed = Random.Range(10f, 15f);
+		speed = Random.Range(1f, 2f);
 		image = Main.main.GetConnectionSprite();
 		transform.localScale = image.bounds.size;
 		// transform.localPosition += Vector3.up * transform.localScale.y/2;
@@ -42,7 +42,9 @@ public class Branch : MonoBehaviour{
 			// }else{
 			// 	transform.up = Vector3.up;
 			// }
-			transform.up = transform.position - parent.transform.position;
+			// transform.up = transform.position - parent.transform.position;
+			transform.up = parent.transform.up;
+
 			transform.Rotate(0, 0, Random.Range(-30, 30));
 			Branch b = parent.GetComponent<Branch>();
 			root = b.root;
@@ -50,10 +52,15 @@ public class Branch : MonoBehaviour{
 			weight = b.weight;
 			// transform.parent = root.parent;
 		}else{
-			transform.up = Vector3.Lerp(transform.position - parent.transform.position, Vector3.up, 0.85f);
+			// GetComponent<Rigidbody>().isKinematic = true;
+			GetComponent<HingeJoint>().connectedBody = parent.GetComponent<Rigidbody>();
+			// followTarget f = gameObject.AddComponent<followTarget>();
+			// f.target = parent;
+			// f.offset = transform.position - parent.transform.position;
+			// transform.up = Vector3.Lerp(transform.position - parent.transform.position, Vector3.up, 0.75f);
 			root = this;
 		}
-		transform.forward = root.parent.transform.forward;
+		transform.forward = parent.transform.forward;
 		branchCount ++;
 
 		StartCoroutine(Grow());
@@ -69,26 +76,38 @@ public class Branch : MonoBehaviour{
 			transform.localScale += Vector3.up * Time.deltaTime * speed;
 			transform.localScale += Vector3.forward * Time.deltaTime * speed;
 			if(!isRoot){
-				transform.position = parent.position + (parent.up * parent.localScale.y/3) + (transform.up * transform.localScale.y/2);
+				transform.position = parent.position + (parent.up * parent.localScale.y/2) + (transform.up * transform.localScale.y/2);
 			}else{
 				// transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 			}
 			yield return null;
 		}
 
-		HingeJoint j = gameObject.AddComponent<HingeJoint>();
-		j.connectedBody = parent.GetComponent<Rigidbody>();
-		j.axis = transform.forward;
-		JointLimits limits = j.limits;
-		limits.min = -2;
-		limits.max = 2;
-		j.limits = limits;
-		j.useLimits = true;
-		j.useSpring = true;
-		JointSpring spring = j.spring;
-		spring.damper = 0.1f;
-		spring.spring = 1f;
-		j.spring = spring;
+				HingeJoint j = gameObject.GetComponent<HingeJoint>();
+				// j.anchor = -(transform.up * transform.localScale.y/2);
+				j.connectedBody = parent.GetComponent<Rigidbody>();
+				j.axis = transform.forward;
+				j.anchor = -Vector3.up * 0.5f;
+				if(!isRoot){
+					j.autoConfigureConnectedAnchor = false;
+					j.connectedAnchor = Vector3.up * 0.5f;
+					GetComponent<Rigidbody>().mass = 1/branchDepth;
+				}
+				// SoftJointLimit limits = j.swing1Limit;
+				// limits.limit = 10;
+				// j.swing1Limit = limits;
+				// j.swing2Limit = limits;
+				// limits.limit = 85;
+				// j.lowTwistLimit = limits;
+				// limits.limit = 95;
+				// j.highTwistLimit = limits;
+				// j.swingAxis = transform.right;
+				// j.useLimits = true;
+				// j.useSpring = true;
+				// SoftJointLimitSpring spring = j.swingLimitSpring;
+				// spring.damper = 0.1f;
+				// spring.spring = 1000f;
+				// j.swingLimitSpring = spring;
 		grown = true;
 	}
 }

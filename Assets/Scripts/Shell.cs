@@ -52,7 +52,7 @@ public class Shell : MonoBehaviour {
 		Branch newBranch = Branch.Instantiate(branchPrefab, t.transform.position + pos, Quaternion.identity).GetComponent<Branch>();
 		branches.Add(newBranch);
 		newBranch.parent = t;
-		
+
 		if(isRoot){
 			newBranch.isRoot = true;
 			roots.Add(newBranch);
@@ -132,7 +132,7 @@ public class Shell : MonoBehaviour {
 		}
 		else{
 			if(lowestBranch.branchDepth < 100f){
-				SpawnBranch(lowestBranch.transform, lowestBranch.transform.localScale.y/2 * lowestBranch.transform.up);
+				SpawnBranch(lowestBranch.transform, lowestBranch.transform.localScale.y/2f * lowestBranch.transform.up);
 			}
 			FindLowestBranch();
 		}

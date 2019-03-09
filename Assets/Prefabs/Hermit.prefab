@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4308245903356592}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Leg5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4962645190479194}
   - component: {fileID: 120298174948910688}
   - component: {fileID: 114889717746623714}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4770950281202822}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4721025127817264}
   - component: {fileID: 120417461649054688}
   - component: {fileID: 114562402561684004}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 4048558893518704}
   - component: {fileID: 120064213725128912}
   - component: {fileID: 114182587069830012}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4473950310594706}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Leg4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 4488947977699970}
   - component: {fileID: 120248051945936984}
   - component: {fileID: 114037686576942834}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4855790032412136}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Leg5 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 4589156765844880}
   - component: {fileID: 120446001004620060}
   - component: {fileID: 114213253208665448}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 4459808585967714}
   - component: {fileID: 120489594423503916}
   - component: {fileID: 114410822896236944}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000225772029786}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Leg4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4028130821907818}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Leg6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,6 +499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDistance: 25
+  playerTransform: {fileID: 0}
 --- !u!114 &114182587069830012
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,7 +13,7 @@ public class followTarget : MonoBehaviour {
 
 	void Update(){
 		if(target != null){
-		transform.position = target.transform.position + offset;
+		transform.position = target.transform.position + target.transform.right * offset.x + target.transform.up * offset.y + target.transform.forward * offset.z;
 		transform.forward = target.transform.forward;
 	 }else{
 		 Destroy(gameObject);
